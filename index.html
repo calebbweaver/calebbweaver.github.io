@@ -4,15 +4,227 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wedding Invitation</title>
+  <title>D | C Wedding Invitation</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❤️</text></svg>">
+
   <style>
+    @font-face {
+      font-family: 'script';
+      font-weight: 400;
+      font-style: normal;
+      src: url("fonts/AbramoScript.woff2") format('woff2');
+    }
+
+    @font-face {
+      font-family: 'text';
+      font-weight: 400;
+      font-style: normal;
+      src: url("fonts/BodoniLTPro-Book.woff2") format('woff2');
+    }
+
+    @media only screen and (max-width: 600px) {
+      .invitation {
+        /* Cream font color */
+        color: #fbf4ef;
+
+        width: 325px;
+        height: 423px;
+
+        perspective: 1000px;
+        cursor: pointer;
+      }
+
+      .invitation-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.6s;
+        transform-style: preserve-3d;
+
+        background-color: black;
+        box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .invitation .invitation-front,.invitation-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+      }
+
+      .invitation.is-flipped .invitation-inner { transform: rotateY(180deg); }
+      .invitation-back { transform: rotateY(180deg); }
+
+      .invite-header {
+        font-size: 70pt;
+        line-height: 70pt;
+        font-weight: 400;
+
+        margin: 0px;
+        margin-top: 40%;
+        margin-bottom: 20%;
+      }
+
+      .invite-names { font-size: 28pt; }
+      .invite-dates {
+        margin-top: 30px;
+        font-size: 14pt;
+      }
+
+      .invite-back-name-block {
+        margin-top: 25px;
+        margin-bottom: 25px;
+      }
+
+      .invite-back-names {
+        font-size: 30pt;
+        line-height: 30pt;
+      }
+
+      .invite-back-block {
+        text-align: center;
+        margin-bottom: 10pt;
+      }
+
+      .invite-back-text {
+        font-size: 12pt;
+        line-height: 12pt;
+        padding-top: 5px;
+      }
+
+      .rsvp-link {
+        text-align: center;
+        vertical-align: bottom;
+        padding: 15px;
+
+        margin-top: 1rem;
+        width: 100%;
+
+        text-decoration: none;
+        color: #fbf4ef;
+        background-color: black;
+
+        font-size: 15pt;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        border-radius: 2px;
+      }
+    }
+
+    @media only screen and (min-width: 600px) {
+      .invitation {
+        /* Cream font color */
+        color: #fbf4ef;
+
+        width: 500px;
+        height: 650px;
+
+        perspective: 1000px;
+        cursor: pointer;
+      }
+
+      .invitation-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.6s;
+        transform-style: preserve-3d;
+
+        background-color: black;
+        box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .invitation .invitation-front,.invitation-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+      }
+
+      .invitation.is-flipped .invitation-inner { transform: rotateY(180deg); }
+      .invitation-back { transform: rotateY(180deg); }
+
+      .invite-header {
+        font-size: 100pt;
+        line-height: 100pt;
+        font-weight: 400;
+
+        margin: 0px;
+        margin-top: 40%;
+        margin-bottom: 20%;
+      }
+
+      .border-bar {
+        border-left: 1px solid black;
+        border-right: 1px solid black;
+
+        margin-left: 25pt;
+        margin-right: 25pt;
+      }
+
+      .invite-names { font-size: 40pt; }
+      .invite-dates {
+        margin-top: 30px;
+        font-size: 20pt;
+      }
+
+      .invite-back-name-block {
+        margin-top: 50px;
+        margin-bottom: 35px;
+      }
+
+      .invite-back-names {
+        font-size: 40pt;
+        line-height: 40pt;
+      }
+
+      .invite-back-block {
+        text-align: center;
+        margin-bottom: 20pt;
+      }
+
+      .invite-back-text {
+        font-size: 14pt;
+        line-height: 14pt;
+        padding-top: 7px;
+      }
+
+      .rsvp-link {
+        text-align: center;
+        vertical-align: bottom;
+        padding: 15px;
+
+        margin-top: 1rem;
+        width: 100%;
+
+        text-decoration: none;
+        color: #fbf4ef;
+        background-color: black;
+
+        font-size: 15pt;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        border-radius: 2px;
+      }
+    }
+
     html,
     body,
     .container {
       width: 100%;
       height: 100%;
 
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: text;
     }
 
     a {
@@ -25,74 +237,18 @@
       padding: 0px;
     }
 
+    p { margin: 0px; }
+    h1 { margin: 0px; padding: 0px;}
+
     .container {
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
-    .rsvp-link {
-      display: inline-block;
-      margin: auto;
-      margin-top: 1rem;
-      padding: 13px 35px 13px 35px;
-      /* width: 499px; */
-      text-decoration: none;
-      color: white;
-      background-color: black;
-
-      text-align: center;
-
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-
-      border-radius: 2px;
-    }
-
-    /* .hide { display: none; }
-    .show { display: block; } */
-
-    /*
-     * FROM https://www.w3schools.com/howto/howto_css_flip_card.asp
-     */
-
-    .flip-card {
-      background-color: transparent;
-      width: 375px;
-      height: 469px;
-      perspective: 1000px;
-      cursor: pointer;
-    }
-
-    .flip-card-inner {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      text-align: center;
-      transition: transform 0.6s;
-      transform-style: preserve-3d;
-      /* box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); */
-    }
-
-    .flip-card.is-flipped .flip-card-inner {
-      transform: rotateY(180deg);
-    }
-
-    .flip-card-front,
-    .flip-card-back {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      -webkit-backface-visibility: hidden;
-      backface-visibility: hidden;
-    }
-
-    .flip-card-back {
-      transform: rotateY(180deg);
-    }
-
-    img {
-      width: 100%;
-    }
+    .margin-top-10px { margin-top: 10px; }
+    .font-weight-100 { font-weight: 100; }
+    .script { font-family: script; }
 
     .caption {
       font-size: 14px;
@@ -103,7 +259,7 @@
 
   <script defer>
     window.addEventListener("DOMContentLoaded", function () {
-      const card = document.querySelector('.flip-card');
+      const card = document.querySelector('.invitation');
       card.addEventListener('click', function () { card.classList.toggle('is-flipped'); });
     });
   </script>
@@ -112,7 +268,55 @@
 <body>
   <div class="container">
     <div>
-      <div class="flip-card">
+
+      <main class="invitation">
+        <div class="invitation-inner">
+          <section class="invitation-front">
+            <h1 class="invite-header">
+              D | C
+            </h1>
+
+            <p class="script invite-names">
+              danae & caleb
+            </p>
+
+            <p class="invite-dates">
+              04.14.2024
+            </p>
+          </section>
+
+          <section class="invitation-back">
+            <div class="invite-back-name-block">
+              <h1 class="script invite-back-names">danae martin</h1>
+              <h1 class="script invite-back-names margin-top-10px">& caleb weaver</h1>
+            </div>
+
+            <div class="invite-back-block">
+              <p class="invite-back-text">invite you to their wedding celebration</p>
+              <p class="invite-back-text">Sunday, April 14th, 2024</p>
+              <p class="invite-back-text">4:15 in the afternoon</p>
+            </div>
+
+            <div class="invite-back-block">
+              <p class="invite-back-text">Historic King Mansion</p>
+              <p class="invite-back-text">2201 N Front Street</p>
+              <p class="invite-back-text">Harrisburg, PA 17110</p>
+            </div>
+
+            <div class="invite-back-block">
+              <p class="invite-back-text">Join us for the reception</p>
+              <p class="invite-back-text">immediately following the ceremony</p>
+            </div>
+
+            <div class="invite-back-block">
+              <p class="invite-back-text">Please RSVP by Saturday, February 24th</p>
+              <p class="invite-back-text">Dress code: Black tie preferred</p>
+            </div>
+          </section>
+        </div>
+      </main>
+
+      <!-- <div class="flip-card">
         <div class="flip-card-inner">
           <div class="flip-card-front">
             <img src="/Users/calebweaver/Downloads/front.png">
@@ -122,14 +326,14 @@
             <img src="/Users/calebweaver/Downloads/back.png">
           </div>
         </div>
-      </div>
+      </div> -->
 
       <span class="caption">
-        Click me to see the back!
+        Click to see the back!
       </span>
 
       <div class="container">
-        <a href="#" class="rsvp-link">RSVP</a>
+        <a href="https://withjoy.com/danae-and-caleb/rsvp?ecard=true" class="rsvp-link">RSVP</a>
       </div>
     </div>
   </div>
