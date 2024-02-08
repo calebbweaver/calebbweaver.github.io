@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wedding Invitation</title>
+  <style>
+    html,
+    body,
+    .container {
+      width: 100%;
+      height: 100%;
+
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    body {
+      background-color: rgb(249, 249, 251);
+      margin: 0px;
+      padding: 0px;
+    }
+
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .rsvp-link {
+      display: inline-block;
+      margin: auto;
+      margin-top: 1rem;
+      padding: 13px 35px 13px 35px;
+      /* width: 499px; */
+      text-decoration: none;
+      color: white;
+      background-color: black;
+
+      text-align: center;
+
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+      border-radius: 2px;
+    }
+
+    /* .hide { display: none; }
+    .show { display: block; } */
+
+    /*
+     * FROM https://www.w3schools.com/howto/howto_css_flip_card.asp
+     */
+
+    .flip-card {
+      background-color: transparent;
+      width: 375px;
+      height: 469px;
+      perspective: 1000px;
+      cursor: pointer;
+    }
+
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+      /* box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); */
+    }
+
+    .flip-card.is-flipped .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flip-card-front,
+    .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+    }
+
+    .flip-card-back {
+      transform: rotateY(180deg);
+    }
+
+    img {
+      width: 100%;
+    }
+
+    .caption {
+      font-size: 14px;
+      font-style: italic;
+      color: darkslategray;
+    }
+  </style>
+
+  <script defer>
+    window.addEventListener("DOMContentLoaded", function () {
+      const card = document.querySelector('.flip-card');
+      card.addEventListener('click', function () { card.classList.toggle('is-flipped'); });
+    });
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="/Users/calebweaver/Downloads/front.png">
+          </div>
+
+          <div class="flip-card-back">
+            <img src="/Users/calebweaver/Downloads/back.png">
+          </div>
+        </div>
+      </div>
+
+      <span class="caption">
+        Click me to see the back!
+      </span>
+
+      <div class="container">
+        <a href="#" class="rsvp-link">RSVP</a>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
